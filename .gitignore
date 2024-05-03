@@ -1,0 +1,6 @@
+*.swp
+*.swo
+tmux/resurrect-files
+nix/built-derivations
+result
+openvpn/expressvpn.txt

@@ -1,0 +1,12 @@
+# Highlight syntax in previews
+set previewer ~/.config/lf/scripts/preview
+
+# Show hidden files
+set hidden!
+
+# line numbers
+set relativenumber
+set number
+
+# Enable icons
+# set icons

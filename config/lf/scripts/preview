@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bat --color=always --style="changes,numbers" "$@"

@@ -1,0 +1,37 @@
+# ──────
+# Global
+# ──────
+colorscheme mygruvbox
+
+set-option global startup_info_version -1
+set-option -add global autoinfo normal # Show clippy helper
+set-option global matching_pairs ( ) { } [ ] < > “ ” ‘ ’ « » ‹ ›
+
+add-highlighter global/match_brackets show-matching
+add-highlighter global/ number-lines -hlcursor -relative -separator ' '
+
+source "%val{config}/local/playground.kak"
+
+# ────────────────────
+# Linting & formatting
+# ────────────────────
+source "%val{config}/local/formatters.kak"
+source "%val{config}/local/linters.kak"
+source "%val{config}/local/editorconfig.kak"
+
+# ──────────────
+# Existing modes 
+# ──────────────
+source "%val{config}/local/normal_mode.kak"
+source "%val{config}/local/insert_mode.kak"
+source "%val{config}/local/user_mode.kak"
+source "%val{config}/local/goto-file.kak"
+
+# ────────────
+# Custom modes
+# ────────────
+source "%val{config}/local/multiple-selection.kak"
+source "%val{config}/local/files_mode.kak"
+source "%val{config}/local/lsp.kak"
+source "%val{config}/local/mirror.kak"
+source "%val{config}/copied/kakoune-mark.kak"

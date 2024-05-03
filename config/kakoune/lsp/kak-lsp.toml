@@ -1,0 +1,5 @@
+[language_server.tsserver]
+filetypes = ["javascript", "typescript"]
+roots = ["package.json"]
+command = "typescript-language-server"
+args = ["--stdio"]
