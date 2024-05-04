@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  nixpkgs.config.allowUnfree = true;
+
   home.packages =  with pkgs; let
     myKakoune = pkgs.wrapKakoune pkgs.kakoune-unwrapped {
       configure.plugins = [pkgs.kakounePlugins.parinfer-rust];
