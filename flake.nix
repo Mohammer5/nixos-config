@@ -3,7 +3,8 @@
 
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
-    nixpkgsTeams.url = github:NixOS/nixpkgs/23.05;
+    nixpkgs2305.url = github:NixOS/nixpkgs/23.05;
+    nixpkgsNode14.url = github:NixOS/nixpkgs/f21b6f77ac562732a4c9b8d1e5751c97853fe873;
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -11,23 +12,16 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgsTeams, home-manager, ... }: 
+  outputs = { nixpkgs, nixpkgs2305, nixpkgsNode14, home-manager, ... }:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    # pkgs2305 = nixpkgsTeams.legacyPackages.${system};
-    pkgs2305 = (import nixpkgsTeams {
+    pkgs2305 = (import nixpkgs2305 {
       inherit system;
-      config = {
-        permittedInsecurePackages = ["nodejs-16.20.0"];
-      };
+      config.permittedInsecurePackages = ["nodejs-16.20.0"];
     });
-    customCypress = pkgs.cypress.overrideAttrs (oldAttrs: {
-      # Use `fetchFromGitHub` or another appropriate fetcher
-      src = pkgs.fetchurl {
-        url = "<URL-to-specific-version-archive>";
-        sha256 = "<correct-sha256>";
-      };
+    pkgsNode14 = (import nixpkgsNode14 {
+      inherit system;
     });
   in {
     nixosConfigurations = {
@@ -54,7 +48,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.gerkules = import ./home.nix;
+            home-manager.users.gerkules = import ./home-gerkules.nix;
           }
         ];
       };
@@ -62,59 +56,18 @@
 
     devShells.${system} = let
       jsPackages = with pkgs; [nodejs yarn nodePackages.typescript-language-server];
-      node16 = pkgs2305.nodejs_16;
-      yarn16 = pkgs2305.yarn.override { nodejs = node16; };
     in {
-      js = pkgs.mkShell {
-        name = "Standard JS development";
-        buildInputs = jsPackages;
-      };
+      jsn16 = (import ./devShells/jsn16.nix { inherit pkgs pkgs2305; });
+      jsn14 = (import ./devShells/jsn14.nix { inherit pkgs pkgsNode14; });
+      reactNative = (import ./devShells/reactNative.nix { inherit pkgs jsPackages; });
+      ocaml = (import ./devShells/ocaml.nix { inherit pkgs; });
 
-      jsn16 = pkgs.mkShell {
-        name = "JS with nodejs v16";
-        buildInputs = [node16 yarn16];
-      };
-
-      cypress = pkgs.mkShell {
-        name = "Cypress (latest) development";
-        buildInputs = [pkgs.cypress] ++ jsPackages;
-        shellHook = ''
-          export NODE_OPTIONS="--openssl-legacy-provider"
-          export CYPRESS_RUN_BINARY="${pkgs.cypress}/bin/Cypress"
-        '';
-      };
-
-      reactNative = pkgs.mkShell {
-        name = "React native development";
-        buildInputs = with pkgs; [
-          android-studio
-          jdk17
-        ] ++ jsPackages;
-      };
-
-      clojure = pkgs.mkShell {
-        name = "Standard clojure development";
-        buildInputs = with pkgs; [
-          clojure
-          leiningen
-        ];
-      };
-
-      ocaml = pkgs.mkShell {
-        name = "Standard OCAML development";
-        buildInputs = with pkgs; [
-          ocaml
-          ocamlPackages.findlib
-          dune_2
-          ocamlPackages.ocaml-lsp
-          ocamlformat
-          ocamlPackages.ocamlformat-rpc-lib
-          ocamlPackages.utop
-          ocamlPackages.re
-          mpv
-          opam
-        ];
-      };
+      # ----> The packages for these are installed by default <----
+      # ###########################################################
+      #
+      # js = import ./devShells/js.nix { inherit jsPackages; };
+      # cypress = (import ./devShells/cypress.nix { inherit pkgs jsPackages; });
+      # clojure = (import ./devShells/clojure.nix { inherit pkgs; });
     };
   };
 }

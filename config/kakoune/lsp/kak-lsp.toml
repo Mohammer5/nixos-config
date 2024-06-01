@@ -3,3 +3,9 @@ filetypes = ["javascript", "typescript"]
 roots = ["package.json"]
 command = "typescript-language-server"
 args = ["--stdio"]
+
+[language."typescript.tsx"]
+filetypes = ["typescript.tsx"]
+roots = ["package.json"]
+command = "typescript-language-server"
+args = ["--stdio"]

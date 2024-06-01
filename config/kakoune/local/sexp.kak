@@ -1,18 +1,22 @@
 # text object selection
 # ─────────────────────
-define-command sexp-select-top-level-compound-form -docstring "" %{
-  nop %sh{
-    if [[ $kak_cursor_column -eq 1 ]] && [[ $kak_selection = "(" ]]
-    then
-      echo "eval -client '$kak_client' 'execute-keys 'm''" |
+define-command sexp-select-top-level-compound-form \
+  -docstring "Select top-level form under/before the cursor" \
+  %{
+    nop %sh{
+      echo "eval -client '$kak_client' 'execute-keys 'ghl<a-?>^($kak_opt_sexp_opening_form_delimiters)<ret>m''" |
         kak -p ${kak_session}
-    else
-      echo "eval -client '$kak_client' 'execute-keys '<a-?>^\(<ret>m''" |
-        kak -p ${kak_session}
-    fi
+    }
   }
-}
-define-command sexp-select-compound-form -docstring "" %{}
+
+define-command sexp-select-compound-form \
+  -docstring "" \
+  %{
+    echo %sh{
+      echo "eval -client '$kak_client' 'execute-keys 'l<a-?>($kak_opt_sexp_opening_form_delimiters)<ret>m''" |
+        kak -p ${kak_session}
+    }
+  }
 
 # Can be done with <a-i>"/<a-a>"
 # define-command sexp-select-string -docstring "" %{}

@@ -36,7 +36,7 @@
         "type": "github"
       }
     },
-    "nixpkgsTeams": {
+    "nixpkgs2305": {
       "locked": {
         "lastModified": 1685566663,
         "narHash": "sha256-btHN1czJ6rzteeCuE/PNrdssqYD2nIA4w48miQAFloM=",
@@ -52,11 +52,28 @@
         "type": "github"
       }
     },
+    "nixpkgsNode14": {
+      "locked": {
+        "lastModified": 1675119840,
+        "narHash": "sha256-lP8D4iAtRg8qiD5EudD0EoYgyBunuktGiwb+L9y+234=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f21b6f77ac562732a4c9b8d1e5751c97853fe873",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f21b6f77ac562732a4c9b8d1e5751c97853fe873",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgsTeams": "nixpkgsTeams"
+        "nixpkgs2305": "nixpkgs2305",
+        "nixpkgsNode14": "nixpkgsNode14"
       }
     }
   },

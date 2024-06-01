@@ -22,11 +22,7 @@ print_buffers() {
   done
 }
 
-# Pick from list of open buffers
-filename=$(print_buffers "$@" | fzf --color=16)
-kak_cmd="eval -client $kak_client edit $filename"
-echo "$kak_cmd" | kak -p "$kak_session"
-
-# # Only echo a command back if there was a selection
-# if [ -n "$selection" ]; then
-# fi
+print_buffers "$@" | fzf -m --color=16 | while read line; do
+  kak_cmd="eval -client $kak_client delete-buffer $line"
+  echo "$kak_cmd" | kak -p "$kak_session"
+done

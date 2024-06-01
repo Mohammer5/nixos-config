@@ -9,6 +9,9 @@
   c = "cd /nixos-config";
   nrsy = "sudo nixos-rebuild switch --flake /nixos-config#$hostname --show-trace";
 
+  # See: https://discourse.nixos.org/t/nix-env-list-generations-is-empty/33747
+  listgens = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
+
   ys = "env BROWSER=none yarn start";
   ns = "env BROWSER=none npm start";
 
@@ -41,6 +44,7 @@
   # dev shells
   js = "nix develop /nixos-config#js -c $SHELL";
   jsn16 = "nix develop /nixos-config#jsn16 -c $SHELL";
+  jsn14 = "nix develop /nixos-config#jsn14 -c $SHELL";
   cyp = "nix develop /nixos-config#cypress -c $SHELL";
   clj = "nix develop /nixos-config#clojure -c $SHELL";
   ocaml = "nix develop /nixos-config#ocaml -c $SHELL";

@@ -20,7 +20,7 @@ source "%val{config}/local/linters.kak"
 source "%val{config}/local/editorconfig.kak"
 
 # ──────────────
-# Existing modes 
+# Existing modes
 # ──────────────
 source "%val{config}/local/normal_mode.kak"
 source "%val{config}/local/insert_mode.kak"
