@@ -7,7 +7,7 @@
     };
   in [
     nodejs yarn nodePackages.typescript-language-server cypress # JS
-    kitty unzip silver-searcher lf fd st ripgrep zip bat # cli utils
+    kitty unzip silver-searcher lf fd st ripgrep zip bat renameutils # cli utils
     brave chromium firefox google-chrome tor-browser # browsers
     sublime4 myKakoune kak-lsp logseq # editors
     tdesktop slack zoom-us # social
