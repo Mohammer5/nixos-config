@@ -16,7 +16,6 @@
   ns = "env BROWSER=none npm start";
 
   mkdir = "mkdir -p";
-  ssh = "kitty +kitten ssh";
 
   # Dir info
   ll = "ls -Flh --group-directories-first";
@@ -48,7 +47,21 @@
   cyp = "nix develop /nixos-config#cypress -c $SHELL";
   clj = "nix develop /nixos-config#clojure -c $SHELL";
   ocaml = "nix develop /nixos-config#ocaml -c $SHELL";
+  playwright = "nix develop /nixos-config#playwright -c $SHELL";
   rn = "nix develop /nixos-config#reactNative -c $SHELL";
+
+  ##
+  #
+  # Monitor handling
+  # ================
+  # ================
+  # ================
+  #
+  ##
+
+  # Nixos Yoga Laptop
+  dp11left = "xrandr --output DisplayPort-1-1 --primary --auto --left-of eDP-1-1";
+  offdp11left = "xrandr --output DisplayPort-1-1 --off --output eDP-1-1 --primary";
 
   ##
   #

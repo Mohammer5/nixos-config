@@ -32,6 +32,11 @@
         #   nixpkgsTeams.legacyPackages.${system}.teams
         # ];
 
+        specialArgs = {
+          inherit system;
+          username = "gerkules";
+        };
+
         modules = [
           ./configuration.nix
           ./hardware-configuration.nix
@@ -44,6 +49,7 @@
           ./modules/direnv.nix
           ./modules/systemState.nix
           ./modules/udev.nix
+          ./modules/libvert.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -61,6 +67,7 @@
       jsn14 = (import ./devShells/jsn14.nix { inherit pkgs pkgsNode14; });
       reactNative = (import ./devShells/reactNative.nix { inherit pkgs jsPackages; });
       ocaml = (import ./devShells/ocaml.nix { inherit pkgs; });
+      playwright = (import ./devShells/playwright.nix { inherit pkgs; });
 
       # ----> The packages for these are installed by default <----
       # ###########################################################

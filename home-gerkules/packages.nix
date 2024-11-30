@@ -7,18 +7,20 @@
     };
   in [
     nodejs yarn nodePackages.typescript-language-server cypress # JS
-    kitty unzip silver-searcher lf fd st ripgrep zip bat renameutils # cli utils
-    brave chromium firefox google-chrome tor-browser # browsers
+    kitty
+    unzip silver-searcher lf fd st ripgrep zip bat renameutils # cli utils
+    brave chromium firefox google-chrome tor-browser opera # browsers
     sublime4 myKakoune kak-lsp logseq # editors
-    tdesktop slack zoom-us # social
+    tdesktop slack zoom-us signal-desktop # social
     editorconfig-core-c
-    ledger-live-desktop
+    ledger-live-desktop trezor-suite
     peek flameshot feh # Image-/video-related tools
     clojure leiningen # clojure
     transmission
     spotify vlc # sound-related tools
     libnotify
     anki-bin
+    obs-studio
 
     php
     php83Packages.composer

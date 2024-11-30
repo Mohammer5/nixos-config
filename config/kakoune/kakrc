@@ -11,13 +11,18 @@ add-highlighter global/match_brackets show-matching
 add-highlighter global/ number-lines -hlcursor -relative -separator ' '
 
 source "%val{config}/local/playground.kak"
+source "%val{config}/local/smarttab.kak"
 
 # ────────────────────
 # Linting & formatting
 # ────────────────────
 source "%val{config}/local/formatters.kak"
 source "%val{config}/local/linters.kak"
-source "%val{config}/local/editorconfig.kak"
+
+hook global BufCreate .* %{
+    editorconfig-load
+    autoconfigtab
+}
 
 # ──────────────
 # Existing modes

@@ -18,10 +18,17 @@
 
   fonts.packages = [pkgs.dejavu_fonts pkgs.nerdfonts];
 
+  networking.extraHosts = ''
+    127.0.0.1 porsche-roads-website.localhost.direct
+  '';
+
   programs.fish.enable = true;
   programs.fish.shellAliases = import ./modules/shell-aliases.nix;
   programs.bash.shellAliases = import ./modules/shell-aliases.nix;
   programs.gnupg.agent.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "gerkules" ];
 
   users.users.gerkules = {
     isNormalUser = true;
@@ -36,9 +43,11 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
   hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
   hardware.enableAllFirmware  = true;
   nixpkgs.config.permittedInsecurePackages = ["electron-13.6.9" "openssl-1.1.1w"];
 
+  services.logind.lidSwitchExternalPower = "ignore";
   services.teamviewer.enable = true;
   services.printing.enable = true;
   services.avahi = {

@@ -10,3 +10,45 @@ set number
 
 # Enable icons
 # set icons
+
+# automatically quit server when there are no clients left connected
+set autoquit
+
+# draw boxes around panes with box drawing characters
+# set drawbox
+
+# =======
+# Copying
+# =======
+
+map yc copy-current
+cmd copy-current ${{
+  qcp --format destination-only "$(realpath --relative-to="$PWD" "$f")"
+}}
+
+map ys copy-selections
+cmd copy-selections ${{
+  clear
+  qcp $fx
+  lf -remote "send $id unselect"
+}}
+
+# ========
+# Renaming
+# ========
+
+map r
+map rr remove
+
+map rc rename-current
+cmd rename-current ${{
+  clear
+  qmv --format destination-only "$(realpath --relative-to="$PWD" "$f")"
+}}
+
+map rs rename-selections
+cmd rename-selections ${{
+  clear
+  qmv $fx
+  lf -remote "send $id unselect"
+}}

@@ -28,5 +28,6 @@ in {
     # ./home-gerkules/symlinks.nix
     ./home-gerkules/mouse.nix
     ./home-gerkules/shell.nix
+    ./home-gerkules/test-service.nix
   ];
 }
