@@ -16,7 +16,7 @@
     ledger-live-desktop trezor-suite
     peek flameshot feh # Image-/video-related tools
     clojure leiningen # clojure
-    transmission
+    transmission stockfish
     spotify vlc # sound-related tools
     libnotify
     anki-bin

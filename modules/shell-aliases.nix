@@ -62,6 +62,8 @@
   # Nixos Yoga Laptop
   dp11left = "xrandr --output DisplayPort-1-1 --primary --auto --left-of eDP-1-1";
   offdp11left = "xrandr --output DisplayPort-1-1 --off --output eDP-1-1 --primary";
+  dp16left = "xrandr --output DisplayPort-1-6 --primary --auto --left-of eDP-1-1";
+  offdp16left = "xrandr --output DisplayPort-1-6 --off --output eDP-1-1 --primary";
 
   ##
   #

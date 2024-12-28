@@ -29,7 +29,8 @@
         inherit system;
 
         # environment.systemPackages = [
-        #   nixpkgsTeams.legacyPackages.${system}.teams
+        #   # nixpkgsTeams.legacyPackages.${system}.teams
+        #   foo
         # ];
 
         specialArgs = {
@@ -50,6 +51,7 @@
           ./modules/systemState.nix
           ./modules/udev.nix
           ./modules/libvert.nix
+          ./modules/shell-script-gkak.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

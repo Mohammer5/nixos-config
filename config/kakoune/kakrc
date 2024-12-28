@@ -11,6 +11,7 @@ add-highlighter global/match_brackets show-matching
 add-highlighter global/ number-lines -hlcursor -relative -separator ' '
 
 source "%val{config}/local/playground.kak"
+source "%val{config}/local/completion.kak"
 source "%val{config}/local/smarttab.kak"
 
 # ────────────────────
@@ -40,3 +41,37 @@ source "%val{config}/local/files_mode.kak"
 source "%val{config}/local/lsp.kak"
 source "%val{config}/local/mirror.kak"
 source "%val{config}/copied/kakoune-mark.kak"
+
+#
+# Playground
+#
+
+define-command open_buffer_picker %{
+  prompt open: -menu -buffer-completion %{
+    buffer -- %val{text}
+  }
+}
+
+define-command kitty-terminal-window -params 1.. -docstring '
+kitty-terminal-window <program> [<arguments>]: create a new terminal as a kitty window
+The program passed as argument will be executed in the new terminal' \
+%{
+    nop %sh{
+        match=""
+        if [ -n "$kak_client_env_KITTY_WINDOW_ID" ]; then
+            match="--match=window_id:$kak_client_env_KITTY_WINDOW_ID"
+        fi
+
+        listen=""
+        if [ -n "$kak_client_env_KITTY_LISTEN_ON" ]; then
+            listen="--to=$kak_client_env_KITTY_LISTEN_ON"
+        fi
+
+        kitty @ $listen launch --no-response --type="$kak_opt_kitty_window_type" --cwd="$PWD" $match "$@"
+    }
+}
+complete-command kitty-terminal-window shell
+
+define-command new-client %{
+  kitty-terminal kak -c %val{session} %val{buffile}
+}
