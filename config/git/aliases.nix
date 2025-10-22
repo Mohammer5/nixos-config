@@ -7,6 +7,13 @@
     echo $ahead | awk '{print $1\" commit(s) ahead of '$base'\"}'; \
     echo $behind | awk '{print $1\" commit(s) behind of '$base'\"}'; \
   }; f";
+  aheadmain = "!f() { \
+    base=\${1-main}; \
+    ahead=$( git rev-list --right-only --count $base...HEAD ); \
+    behind=$( git rev-list --left-only --count $base...HEAD ); \
+    echo $ahead | awk '{print $1\" commit(s) ahead of '$base'\"}'; \
+    echo $behind | awk '{print $1\" commit(s) behind of '$base'\"}'; \
+  }; f";
   amend = "commit --amend";
   amno = "commit --amend --no-edit";
   ap = "add -p";

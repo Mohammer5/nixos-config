@@ -240,6 +240,7 @@ mode "resize" {
 bar {
 	i3bar_command i3bar
 	status_command i3status
+
   #; status_command ty3status --config ~/.config/ty3status/ty3status.yaml
   #; height 25
 	position top

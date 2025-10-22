@@ -13,10 +13,14 @@
 
   time.timeZone = "Europe/Berlin";
   # time.timeZone = "Asia/Manila";
-  services.localtimed.enable = true;
+  services.localtimed.enable = false;
   i18n.defaultLocale = "en_US.UTF-8";
 
-  fonts.packages = [pkgs.dejavu_fonts pkgs.nerdfonts];
+  fonts.packages = [
+    pkgs.dejavu_fonts
+    # pkgs.nerdfonts
+  ] ++ builtins.filter pkgs.lib.attrsets.isDerivation
+      (builtins.attrValues pkgs.nerd-fonts);
 
   networking.extraHosts = ''
     127.0.0.1 porsche-roads-website.localhost.direct

@@ -1,10 +1,10 @@
-{ config, pkgs, ... }: {  
+{ config, pkgs, ... }: {
   #   layout = "us";
   #   xkbVariant = "";
   hardware = {
     opengl = {
       enable = true;
-      driSupport = true;
+      # driSupport = true;
       driSupport32Bit = true;
     };
 
@@ -40,7 +40,7 @@
       displayManager = {
           startx.enable = true;
           lightdm.enable = true;
-      
+
         # defaultSession = "none+i3";
         # sessionCommands = ''
         #   ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1-1 --mode 1680x1050 --primary
@@ -63,14 +63,11 @@
 
       windowManager.i3 = {
         enable = true;
-        # package = pkgs.i3-gaps;
         extraPackages = with pkgs; [
-          # dmenu
           # i3bar
           i3status
-	    #    i3lock
           i3blocks
-          rofi
+          rofi # original: dmenu
         ];
       };
     };

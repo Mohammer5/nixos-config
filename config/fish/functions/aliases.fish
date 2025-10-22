@@ -4,6 +4,7 @@ alias ys "env BROWSER=none yarn start"
 alias ns "env BROWSER=none npm start"
 alias nd "npm run dev"
 alias mkdir "mkdir -p"
+alias nrsy "sudo nixos-rebuild switch --flake /home/gerkules/nixos-configuration#laptopYoga --show-trace"
 
 # Dir info
 alias ll "ls -Flh --group-directories-first"
