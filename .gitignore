@@ -4,3 +4,6 @@ tmux/resurrect-files
 nix/built-derivations
 result
 openvpn/expressvpn.txt
+
+config_laptop
+config_orig

@@ -1,7 +1,7 @@
-# # declare-option -hidden str-list sexp-form-delimiters ( ) { } [ ] \"
-# # declare-option -hidden str sexp_opening_form_delimiters "\(|\{|\["
+# declare-option -hidden str-list sexp-form-delimiters ( ) { } [ ] \"
+# declare-option -hidden str sexp_opening_form_delimiters "\(|\{|\["
 # declare-option -hidden str sexp_element_delimiters "\(|\{|\[|\s"
-# 
+#
 # # Only works when there are actually top level forms under/before the cursor
 # # Command explained:
 # #
@@ -19,7 +19,7 @@
 #         kak -p ${kak_session}
 #     }
 #   }
-# 
+#
 # define-command sexp-select-compound-form \
 #   -docstring "" \
 #   %{
@@ -28,5 +28,5 @@
 #         kak -p ${kak_session}
 #     }
 #   }
-# 
+#
 # define-command sexp-splice-the-current-compound-form-into-its-parent. -docstring "" %{}

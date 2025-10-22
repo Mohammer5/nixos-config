@@ -7,7 +7,7 @@
 
   # nixos config related
   c = "cd /nixos-config";
-  nrsy = "sudo nixos-rebuild switch --flake /nixos-config#$hostname --show-trace";
+  nrsy = "sudo nixos-rebuild switch --flake /home/gerkules/nixos-configuration#laptopYoga --show-trace";
 
   # See: https://discourse.nixos.org/t/nix-env-list-generations-is-empty/33747
   listgens = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: {  
   #   layout = "us";
   #   xkbVariant = "";
   hardware = {
@@ -22,23 +22,33 @@
   };
 
   services = {
-    displayManager.defaultSession = "none+i3";
+    # displayManager.defaultSession = "none+i3";
     xserver = {
       enable = true;
-      videoDrivers = [ "nvidia" ];
+      # videoDrivers = [ "nvidia" ];
+
+      # Enable the GNOME Desktop Environment.
+      # displayManager.gdm.enable = true;
+      # desktopManager.gnome.enable = true;
+
+      # Configure keymap in X11
+      # xkb = {
+      #   layout = "us";
+      #   variant = "";
+      # };
 
       displayManager = {
-	      startx.enable = true;
-        lightdm.enable = true;
-
+          startx.enable = true;
+          lightdm.enable = true;
+      
         # defaultSession = "none+i3";
         # sessionCommands = ''
         #   ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1-1 --mode 1680x1050 --primary
         # '';
 
-        sessionCommands = ''
-          ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1-1 --mode 1440x900 --primary
-        '';
+          sessionCommands = ''
+            ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1-1 --mode 1440x900 --primary
+          '';
       };
 
       desktopManager = {
@@ -58,7 +68,7 @@
           # dmenu
           # i3bar
           i3status
-	        i3lock
+	    #    i3lock
           i3blocks
           rofi
         ];

@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: let
-    cwd = "/nixos-config";
+  cwd = "/home/gerkules/nixos-configuration";
 in {
   home = {
     username = "gerkules";

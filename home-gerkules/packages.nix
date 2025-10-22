@@ -9,7 +9,7 @@
     nodejs yarn nodePackages.typescript-language-server cypress # JS
     kitty
     unzip silver-searcher lf fd st ripgrep zip bat renameutils # cli utils
-    brave chromium firefox google-chrome tor-browser opera # browsers
+    brave chromium firefox tor-browser opera # google-chrome # browsers
     sublime4 myKakoune kak-lsp logseq # editors
     tdesktop slack zoom-us signal-desktop # social
     editorconfig-core-c

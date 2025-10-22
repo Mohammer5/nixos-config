@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Local variables
 kak_buffile="$1" kak_session="$2" kak_client="$3"
 

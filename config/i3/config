@@ -15,7 +15,7 @@ bindsym $mod+Shift+q kill
 #; # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun -matching fuzzy -sorting-method fzf -sort
 
-exec_always --no-startup-id "bash ~/.dotfiles/flameshot/reset_save_dir.sh"
+# exec_always --no-startup-id "bash ~/.dotfiles/flameshot/reset_save_dir.sh"
 bindsym $mod+Shift+F10 exec "zenity --file-selection --directory > ~/.dotfiles/flameshot/save_dir.txt"
 bindsym $mod+F10 exec "flameshot gui"
 bindsym $mod+F9 exec "peek"
@@ -189,15 +189,10 @@ for_window [class="st-256color"] floating enable border pixel 1, resize set 70 p
 for_window [class="Pavucontrol"] floating enable border pixel 1
 for_window [title="alsamixer"] floating enable border pixel 1
 
-#; # switch to workspace with urgent window automatically
-#; for_window [urgent=latest] focus
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
-
-#; # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-#; bindsym $mod+Shift+r restart
-
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -285,3 +280,7 @@ workspace_layout tabbed # <stacking|tabbed>
 
 #; # Use Mouse+$mod to drag floating windows
 #; floating_modifier $mod
+
+exec --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
+
+exec --no-startup-id nm-applet

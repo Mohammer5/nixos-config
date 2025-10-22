@@ -11,8 +11,8 @@
     };
   };
 
-  # time.timeZone = "Europe/Berlin";
-  time.timeZone = "Asia/Manila";
+  time.timeZone = "Europe/Berlin";
+  # time.timeZone = "Asia/Manila";
   services.localtimed.enable = true;
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -23,8 +23,8 @@
   '';
 
   programs.fish.enable = true;
-  programs.fish.shellAliases = import ./modules/shell-aliases.nix;
-  programs.bash.shellAliases = import ./modules/shell-aliases.nix;
+  # programs.fish.shellAliases = import ./modules/shell-aliases.nix;
+  # programs.bash.shellAliases = import ./modules/shell-aliases.nix;
   programs.gnupg.agent.enable = true;
 
   virtualisation.virtualbox.host.enable = true;

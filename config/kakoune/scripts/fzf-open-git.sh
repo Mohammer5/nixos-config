@@ -1,5 +1,3 @@
-#!/bin/bash
-
 log_error() {
   local message="$1"
 

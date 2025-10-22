@@ -2,6 +2,7 @@
 # Global
 # ──────
 colorscheme mygruvbox
+# colorscheme solarized-light
 
 set-option global startup_info_version -1
 set-option -add global autoinfo normal # Show clippy helper
@@ -10,7 +11,6 @@ set-option global matching_pairs ( ) { } [ ] < > “ ” ‘ ’ « » ‹ ›
 add-highlighter global/match_brackets show-matching
 add-highlighter global/ number-lines -hlcursor -relative -separator ' '
 
-source "%val{config}/local/playground.kak"
 source "%val{config}/local/completion.kak"
 source "%val{config}/local/smarttab.kak"
 
@@ -74,4 +74,10 @@ complete-command kitty-terminal-window shell
 
 define-command new-client %{
   kitty-terminal kak -c %val{session} %val{buffile}
+}
+
+source "%val{config}/local/playground.kak"
+
+hook global WinSetOption filetype=.* %{
+  add-highlighter window/ column 81 default,rgb:ff0000
 }
