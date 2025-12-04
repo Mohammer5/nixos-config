@@ -14,14 +14,14 @@
       buildInputs = [node16 yarn16];
     };
 
-    cypress = pkgs.mkShell {
-      name = "Cypress (latest) development";
-      buildInputs = [pkgs.cypress] ++ jsPackages;
-      shellHook = ''
-        export NODE_OPTIONS="--openssl-legacy-provider"
-        export CYPRESS_RUN_BINARY="${pkgs.cypress}/bin/Cypress"
-      '';
-    };
+    # cypress = pkgs.mkShell {
+    #   name = "Cypress (latest) development";
+    #   buildInputs = [pkgs.cypress] ++ jsPackages;
+    #   shellHook = ''
+    #     export NODE_OPTIONS="--openssl-legacy-provider"
+    #     export CYPRESS_RUN_BINARY="${pkgs.cypress}/bin/Cypress"
+    #   '';
+    # };
 
     reactNative = pkgs.mkShell {
       name = "React native development";

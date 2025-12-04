@@ -4,6 +4,10 @@ fish_vi_key_bindings
 set -g theme_color_scheme "Solarized light"
 set -gx EDITOR kak
 
+if test -d "$HOME/.local/bin"
+    fish_add_path "$HOME/.local/bin"
+end
+
 function reverse_history_search
   history | fzf --no-sort --height 30 | read -l command
   test $command && commandline -rb $command
@@ -24,6 +28,12 @@ alias ys "env BROWSER=none yarn start"
 alias ns "env BROWSER=none npm start"
 alias nd "npm run dev"
 alias mkdir "mkdir -p"
+alias config "cd ~/nixos-configuration"
+
+function nrsy
+    echo "Building system: $NIXOS_CONFIG_PATH#$hostname"
+    sudo nixos-rebuild switch --flake "$NIXOS_CONFIG_PATH#$HOSTNAME" --show-trace
+end
 
 # Dir info
 alias ll "ls -Flh --group-directories-first"
@@ -115,7 +125,7 @@ end
 alias ".." "cd .."
 alias "..." "cd ../.."
 alias "...." "cd ../../.."
-alias dev "cd ~/development"
+alias dev "cd /mnt/ssd/development"
 alias ip "dev && cd interactive-pioneers"
 alias compr "dev && cd compr"
 

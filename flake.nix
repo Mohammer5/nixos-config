@@ -1,82 +1,67 @@
 {
-  description = "A very basic flake";
+  description = "Jan-Gerke's NixOS config";
 
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
-    nixpkgs2305.url = github:NixOS/nixpkgs/23.05;
-    nixpkgsNode14.url = github:NixOS/nixpkgs/f21b6f77ac562732a4c9b8d1e5751c97853fe873;
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
   };
 
-  outputs = { nixpkgs, nixpkgs2305, nixpkgsNode14, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
   let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    pkgs2305 = (import nixpkgs2305 {
+
+    pkgs = import nixpkgs {
       inherit system;
-      config.permittedInsecurePackages = ["nodejs-16.20.0"];
-    });
-    pkgsNode14 = (import nixpkgsNode14 {
-      inherit system;
-    });
-  in {
-    nixosConfigurations = {
-      laptopYoga = nixpkgs.lib.nixosSystem {
-        inherit system;
-
-        # environment.systemPackages = [
-        #   # nixpkgsTeams.legacyPackages.${system}.teams
-        #   foo
-        # ];
-
-        specialArgs = {
-          inherit system;
-          username = "gerkules";
-        };
-
-        modules = [
-          ./configuration.nix
-          ./hardware-configuration.nix
-          ./modules/xserver.nix
-          ./modules/environment-laptopYoga.nix
-          ./modules/audio.nix
-          ./modules/networking.nix
-          ./modules/systemPackages.nix
-          ./modules/yoga-laptop-hardware.nix
-          ./modules/direnv.nix
-          ./modules/systemState.nix
-          ./modules/udev.nix
-          ./modules/libvert.nix
-          ./modules/shell-script-gkak.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.gerkules = import ./home-gerkules.nix;
-          }
-        ];
-      };
+      config.allowUnfree = true;  # or use the predicate below
     };
 
-    devShells.${system} = let
-      jsPackages = with pkgs; [nodejs yarn nodePackages.typescript-language-server];
-    in {
-      jsn16 = (import ./devShells/jsn16.nix { inherit pkgs pkgs2305; });
-      jsn14 = (import ./devShells/jsn14.nix { inherit pkgs pkgsNode14; });
-      reactNative = (import ./devShells/reactNative.nix { inherit pkgs jsPackages; });
-      ocaml = (import ./devShells/ocaml.nix { inherit pkgs; });
-      playwright = (import ./devShells/playwright.nix { inherit pkgs; });
+    mkHost = extraModules: nixpkgs.lib.nixosSystem {
+      inherit system;
 
-      # ----> The packages for these are installed by default <----
-      # ###########################################################
-      #
-      # js = import ./devShells/js.nix { inherit jsPackages; };
-      # cypress = (import ./devShells/cypress.nix { inherit pkgs jsPackages; });
-      # clojure = (import ./devShells/clojure.nix { inherit pkgs; });
+      specialArgs = {
+        inherit system;
+        username = "gerkules";
+      };
+
+      modules = extraModules ++ [
+        ./configuration.nix
+        ./modules/additional-harddrives.nix
+        ./modules/xserver.nix
+        ./modules/audio.nix
+        ./modules/systemPackages.nix
+        ./modules/yoga-laptop-hardware.nix
+        ./modules/direnv.nix
+        ./modules/systemState.nix
+        ./modules/udev.nix
+        ./modules/libvert.nix
+        ./modules/shell-script-gkak.nix
+        ./modules/samba.nix
+
+        # Home manager configuration
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.gerkules = import ./home-gerkules.nix;
+        }
+      ];
+    };
+  in {
+    nixosConfigurations = {
+      towerGermany = mkHost [
+        ./modules/hardware-configuration-tower-germany.nix
+        # ./modules/environment-towerGermany.nix
+        # ./modules/networking-towerGermany.nix
+        ./modules/environment-laptopYoga.nix
+        ./modules/networking-laptopYoga.nix
+      ];
+
+      laptopYoga = mkHost [
+        # @TODO
+        # ./modules/hardware-configuration-tower-germany.nix
+        ./modules/environment-laptopYoga.nix
+        ./modules/networking-laptopYoga.nix
+      ];
     };
   };
 }

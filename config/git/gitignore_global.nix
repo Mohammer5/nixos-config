@@ -54,4 +54,7 @@
   "nix-shell.nix"
   ".direnv"
   ".envrc"
+  "flake.nix"
+  "flake.lock"
+  ".gemini"
 ]

@@ -2,7 +2,7 @@
 kak_session="$1" kak_client="$2"
 
 # Working directory for fd defaults to the directory where kakoune was started
-filename=$(fd --type=f --strip-cwd-prefix . | fzf --color=16 --preview 'cat {1}')
+filename=$(fd -u --type=f --strip-cwd-prefix . | fzf --color=16 --preview 'cat {1}')
 
 # Only echo a command back if there was a selection
 if [ -n "$filename" ]; then

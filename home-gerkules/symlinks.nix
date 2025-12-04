@@ -1,6 +1,6 @@
 { config, ... }: {
 	home.file = with config.lib.file; let
-    # configDirectory = builtins.toString ../config;
+    # configDirectory = builtins.toString ../../config;
     configDirectory = "/home/gerkules/nixos-configuration/config";
   in {
     # files
