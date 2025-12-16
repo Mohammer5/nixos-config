@@ -13,6 +13,7 @@ add-highlighter global/ number-lines -hlcursor -relative -separator ' '
 
 source "%val{config}/local/completion.kak"
 source "%val{config}/local/smarttab.kak"
+source "%val{config}/local/syntax_highlighting.kak"
 
 # ────────────────────
 # Linting & formatting
