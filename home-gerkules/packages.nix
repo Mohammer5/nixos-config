@@ -10,18 +10,19 @@
     kitty usbutils
     unzip silver-searcher lf fd st ripgrep zip bat renameutils # cli utils
     brave chromium firefox tor-browser # opera google-chrome # browsers
-    sublime4 myKakoune kak-lsp logseq postman # editors
-    tdesktop slack zoom-us signal-desktop # social
+    sublime4 myKakoune kakoune-lsp logseq postman # editors
+    telegram-desktop slack zoom-us signal-desktop # social
     editorconfig-core-c
     ledger-live-desktop trezor-suite
     peek flameshot feh # Image-/video-related tools
     clojure leiningen # clojure
-    transmission_3 stockfish
+    transmission_4 stockfish
     spotify vlc # sound-related tools
     libnotify
     anki-bin
     obs-studio
     expressvpn
+    xcolor
   ];
 
   programs.neovim = {
