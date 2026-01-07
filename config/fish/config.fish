@@ -30,7 +30,8 @@ alias nd "npm run dev"
 alias mkdir "mkdir -p"
 alias config "cd ~/nixos-configuration"
 
-function nrsy
+# reb = rebuild, s = switce
+function rebs
     echo "Building system: $NIXOS_CONFIG_PATH#$hostname"
     sudo nixos-rebuild switch --flake "$NIXOS_CONFIG_PATH#$HOSTNAME" --show-trace
 end
@@ -50,6 +51,8 @@ alias k "kak"
 alias kitty "kitty -o allow_remote_control=yes"
 alias nvim "echo \"Did you mean 'kak'?\""
 alias k "gkak"
+alias chromium "chromium --remote-debugging-port=9222"
+alias chr "chromium --remote-debugging-port=9222"
 
 # Remove node_modules folder
 alias rmnm "find ./ -iname node_modules -type d | xargs rm -r"

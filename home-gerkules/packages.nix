@@ -5,11 +5,21 @@
     myKakoune = pkgs.wrapKakoune pkgs.kakoune-unwrapped {
       configure.plugins = [pkgs.kakounePlugins.parinfer-rust];
     };
+
+    chromiumWithFlags = pkgs.symlinkJoin {
+      name = "chromium-with-remote-debug";
+      paths = [ pkgs.chromium ];
+      nativeBuildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/chromium \
+          --add-flags "--remote-debugging-port=9222"
+      '';
+    };
   in [
     nodejs_24 yarn nodePackages.typescript-language-server # JS
     kitty usbutils
-    unzip silver-searcher lf fd st ripgrep zip bat renameutils # cli utils
-    brave chromium firefox tor-browser # opera google-chrome # browsers
+    unzip silver-searcher lf fd st ripgrep zip bat # renameutils # cli utils
+    brave chromiumWithFlags firefox tor-browser # opera google-chrome # browsers
     sublime4 myKakoune kakoune-lsp logseq postman # editors
     telegram-desktop slack zoom-us signal-desktop # social
     editorconfig-core-c
