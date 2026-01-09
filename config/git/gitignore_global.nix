@@ -2,7 +2,6 @@
   # starscope / ctags / cscope
   ".starscope.db"
   "cscope.out"
-  "tags"
 
   # git time manager
   ".gtm/"
@@ -10,34 +9,6 @@
   ####################################################
   # From: https://gist.github.com/octocat/9257657
   ####################################################
-
-  # Compiled source #
-  ###################
-  "*.com"
-  "*.class"
-  "*.dll"
-  "*.exe"
-  "*.o"
-  "*.so"
-
-  # Packages #
-  ############
-  # it's better to unpack these files and commit the raw source
-  # git has its own built in compression methods
-  "*.7z"
-  "*.dmg"
-  "*.gz"
-  "*.iso"
-  "*.jar"
-  "*.rar"
-  "*.tar"
-  "*.zip"
-
-  # Logs and databases #
-  ######################
-  "*.log"
-  "*.sql"
-  "*.sqlite"
 
   # OS generated files #
   ######################
@@ -48,13 +19,4 @@
   ".Trashes"
   "ehthumbs.db"
   "Thumbs.db"
-
-  # NixOS & direnv files #
-  ########################
-  "nix-shell.nix"
-  ".direnv"
-  ".envrc"
-  "flake.nix"
-  "flake.lock"
-  ".gemini"
 ]

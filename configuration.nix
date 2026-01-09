@@ -72,6 +72,7 @@
   ];
   networking.hosts = let
     landoSites = [
+      "st24.lndo.site"
       "radicle.lndo.site" # IP radicle base repo
       "rwthcampus.lndo.site"
       "reit-wm-2026.lndo.site"

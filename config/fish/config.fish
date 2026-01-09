@@ -36,6 +36,11 @@ function rebs
     sudo nixos-rebuild switch --flake "$NIXOS_CONFIG_PATH#$HOSTNAME" --show-trace
 end
 
+# Dev shells
+function php84
+    nix develop ~/nixos-configuration#php84 -c $SHELL
+end
+
 # Dir info
 alias ll "ls -Flh --group-directories-first"
 
