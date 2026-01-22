@@ -50,10 +50,8 @@
     nixosConfigurations = {
       towerGermany = mkHost [
         ./modules/hardware-configuration-tower-germany.nix
-        # ./modules/environment-towerGermany.nix
-        # ./modules/networking-towerGermany.nix
-        ./modules/environment-laptopYoga.nix
-        ./modules/networking-laptopYoga.nix
+        ./modules/environment-towerGermany.nix
+        ./modules/networking-towerGermany.nix
       ];
 
       laptopYoga = mkHost [

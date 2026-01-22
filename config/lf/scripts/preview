@@ -1,3 +1,39 @@
-#!/bin/bash
+#!/bin/sh
 
-bat --color=always --style="changes,numbers" "$@"
+file="$1"
+width="$2"
+height="$3"
+x="$4"
+y="$5"
+
+# 1) Make errors visible in lf (stderr -> stdout)
+exec 2>&1
+
+# Optional: show what lf passed in (comment out if noisy)
+echo "DEBUG: file=$file w=$width h=$height x=$x y=$y"
+
+case "$(file --mime-type -Lb "$file")" in
+    application/pdf)
+        page=1
+
+        echo "Rendering PDF preview..."
+        prefix="/tmp/lf-pdf-preview"
+
+        echo "cmd: pdftoppm -png -singlefile -f $page -l $page \"$file\" \"$prefix\""
+        pdftoppm -png -singlefile -f "$page" -l "$page" "$file" "$prefix"
+        rc=$?
+        echo "pdftoppm exit code: $rc"
+        [ $rc -ne 0 ] && exit 0
+
+        tmp="${prefix}.png"
+        echo "cmd: kitty +kitten icat --place \"${width}x${height}@${x}x${y}\" \"$tmp\""
+        kitty +kitten icat --place "${width}x${height}@${x}x${y}" "$tmp"
+        rc=$?
+        echo "icat exit code: $rc"
+
+        exit 1
+        ;;
+    *)
+        bat --color=always --style="changes,numbers" "$@"
+        ;;
+esac

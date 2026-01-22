@@ -22,7 +22,7 @@
     brave chromiumWithFlags firefox tor-browser # opera google-chrome # browsers
     sublime4 myKakoune kakoune-lsp logseq postman # editors
     telegram-desktop slack zoom-us signal-desktop # social
-    editorconfig-core-c
+    editorconfig-core-c poppler-utils file imagemagick
     ledger-live-desktop trezor-suite
     peek flameshot feh # Image-/video-related tools
     clojure leiningen # clojure
