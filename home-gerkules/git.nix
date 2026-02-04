@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, devBaseDir, ... }: {
   programs.git = {
     enable = true;
     ignores = import ../config/git/gitignore_global.nix;
@@ -14,7 +14,7 @@
     # conditional user information overrides
     includes = [
       {
-        condition = "gitdir:/mnt/ssd/development/interactive-pioneers/";
+        condition = "gitdir:${devBaseDir}/interactive-pioneers/";
         contents.user = {
           name = "Jan-Gerke Salomon";
           email = "jgs@interactive-pioneers.de";

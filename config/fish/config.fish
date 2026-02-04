@@ -73,6 +73,8 @@ alias dp11left11 "xrandr --output DisplayPort-1-1 --primary --auto --left-of eDP
 alias offdp11left11 "xrandr --output DisplayPort-1-1 --off --output eDP-1-1 --brightness 1.0 --primary"
 alias dp2left1 "xrandr --output DP-2 --primary --auto --left-of eDP-1 --output eDP-1 --brightness 1.0 --mode 1680x1050"
 alias offdp2left1 "xrandr --output DP-2 --off --output eDP-1 --brightness 1.0 --primary"
+alias dp2left1 "xrandr --output DP-7 --primary --auto --left-of eDP-1 --output eDP-1 --brightness 1.0 --mode 1680x1050"
+alias offdp2left1 "xrandr --output DP-7 --off --output eDP-1 --brightness 1.0 --primary"
 alias dp16left10 "xrandr --output DisplayPort-1-6 --primary --auto --left-of eDP-1-0 --output eDP-1-0 --brightness 1.0 --mode 1680x1050"
 alias offdp16left10 "xrandr --output DisplayPort-1-6 --off --output eDP-1-0 --brightness 1.0 --primary"
 alias dp16left11 "xrandr --output DisplayPort-1-6 --primary --auto --left-of eDP-1-1 --output eDP-1-1 --brightness 1.0 --mode 1680x1050"
@@ -133,7 +135,7 @@ end
 alias ".." "cd .."
 alias "..." "cd ../.."
 alias "...." "cd ../../.."
-alias dev "cd /mnt/ssd/development"
+alias dev "cd $DEV_BASE_DIR"
 alias ip "dev && cd interactive-pioneers"
 alias compr "dev && cd compr"
 
