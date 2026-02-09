@@ -39,11 +39,12 @@
 
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "gerkules" ];
+  users.groups.www-data = {};
 
   users.users.gerkules = {
     isNormalUser = true;
     description = "Gerkules";
-    extraGroups = [ "audio" "networkmanager" "wheel" "docker" "plugdev" "scanner" "lp" ];
+    extraGroups = [ "audio" "networkmanager" "wheel" "docker" "plugdev" "scanner" "lp" "www-data" ];
     packages = with pkgs; [];
     shell = pkgs.fish;
   };
