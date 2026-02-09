@@ -17,13 +17,12 @@
         efiSupport = true;
         enable = true;
         devices = [ "nodev" ];
-        useOSProber = true;
       };
     };
   };
 
-  time.timeZone = "Europe/Berlin";
-  # time.timeZone = "Asia/Manila";
+  # time.timeZone = "Europe/Berlin";
+  time.timeZone = "Asia/Manila";
   services.localtimed.enable = false;
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -69,6 +68,7 @@
   # for lando
   security.pki.certificateFiles = [
     ./certs/lando-local-ca.crt
+    ./certs/localhost.direct.2026.crt
   ];
   networking.hosts = let
     landoSites = [

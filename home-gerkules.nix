@@ -25,6 +25,7 @@ in {
 
   imports = [
     # ./home-gerkules/symlinks.nix
+    ./home-gerkules/brave.nix
     ./home-gerkules/packages.nix
     ./home-gerkules/git.nix
     ./home-gerkules/mouse.nix

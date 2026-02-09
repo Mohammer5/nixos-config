@@ -8,6 +8,7 @@
       pavucontrol
       docker-compose
       autorandr
+      expressvpn
 
       # External HDD compatibility
       parted

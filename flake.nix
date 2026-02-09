@@ -25,7 +25,6 @@
 
       modules = extraModules ++ [
         ./configuration.nix
-        ./modules/additional-harddrives.nix
         ./modules/xserver.nix
         ./modules/audio.nix
         ./modules/systemPackages.nix
@@ -52,13 +51,14 @@
         ./modules/hardware-configuration-tower-germany.nix
         ./modules/environment-towerGermany.nix
         ./modules/networking-towerGermany.nix
+        ./modules/additional-harddrives.nix
       ];
 
       laptopYoga = mkHost [
-        # @TODO
-        # ./modules/hardware-configuration-tower-germany.nix
+        ./modules/hardware-configuration-laptop-yoga.nix
         ./modules/environment-laptopYoga.nix
         ./modules/networking-laptopYoga.nix
+        ./modules/grub.nix
       ];
     };
 
