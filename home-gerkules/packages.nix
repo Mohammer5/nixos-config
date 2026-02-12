@@ -2,6 +2,10 @@
   # nixpkgs.config.allowUnfree = true;
 
   home.packages =  with pkgs; let
+    polybarWithSupport = pkgs.polybar.override {
+      i3Support = true;
+      pulseSupport = true;
+    };
     myKakoune = pkgs.wrapKakoune pkgs.kakoune-unwrapped {
       configure.plugins = [pkgs.kakounePlugins.parinfer-rust];
     };
@@ -29,10 +33,12 @@
     transmission_4 stockfish
     spotify vlc # sound-related tools
     libnotify
+    polybarWithSupport
     anki-bin
     obs-studio
     expressvpn
     xcolor
+    font-awesome
   ];
 
   programs.neovim = {

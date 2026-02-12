@@ -132,52 +132,52 @@ bindsym $mod+Shift+space floating toggle
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 "1Console"
-set $ws2 "2Main"
+set $ws1 "1:Console"
+set $ws2 "2:Main"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8Slack"
-set $ws9 "9Chats"
-set $ws0 "Spotify"
+set $ws8 "8:Slack"
+set $ws9 "9:Chats"
+set $ws0 "10:Spotify"
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws0
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws0
 
 # Move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace $ws1
-bindsym $mod+Ctrl+2 move container to workspace $ws2
-bindsym $mod+Ctrl+3 move container to workspace $ws3
-bindsym $mod+Ctrl+4 move container to workspace $ws4
-bindsym $mod+Ctrl+5 move container to workspace $ws5
-bindsym $mod+Ctrl+6 move container to workspace $ws6
-bindsym $mod+Ctrl+7 move container to workspace $ws7
-bindsym $mod+Ctrl+8 move container to workspace $ws8
-bindsym $mod+Ctrl+9 move container to workspace $ws9
-bindsym $mod+Ctrl+0 move container to workspace $ws0
+bindsym $mod+Ctrl+1 move container to workspace number $ws1
+bindsym $mod+Ctrl+2 move container to workspace number $ws2
+bindsym $mod+Ctrl+3 move container to workspace number $ws3
+bindsym $mod+Ctrl+4 move container to workspace number $ws4
+bindsym $mod+Ctrl+5 move container to workspace number $ws5
+bindsym $mod+Ctrl+6 move container to workspace number $ws6
+bindsym $mod+Ctrl+7 move container to workspace number $ws7
+bindsym $mod+Ctrl+8 move container to workspace number $ws8
+bindsym $mod+Ctrl+9 move container to workspace number $ws9
+bindsym $mod+Ctrl+0 move container to workspace number $ws0
 
 # Move to workspace with focused container
-bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
+bindsym $mod+Shift+1 move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5; workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6; workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7; workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9; workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws0; workspace number $ws0
 
 # # Open applications on specific workspaces
 # for_window [class="Spotify"] move to workspace $ws0
@@ -236,34 +236,37 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+# Start Polybar
+exec_always --no-startup-id "bash /home/gerkules/nixos-configuration/config/i3/polybar_launch.sh"
+
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	i3bar_command i3bar
-	status_command i3status
-
-  #; status_command ty3status --config ~/.config/ty3status/ty3status.yaml
-  #; height 25
-	position top
-
-  ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
- 	tray_output primary
-
-	bindsym button4 nop
-	bindsym button5 nop
-	strip_workspace_numbers yes
-
-  colors {
-      background #222D31
-      statusline #F9FAF9
-      separator  #454947
-
-      focused_workspace  #222D31 #16a085 #292F34
-      active_workspace   #222D31 #353836 #FDF6E3
-      inactive_workspace #222D31 #222D31 #EEE8D5
-      binding_mode       #222D31 #2C2C2C #F9FAF9
-      urgent_workspace   #222D31 #FDF6E3 #E5201D
-  }
-}
+# bar {
+# 	i3bar_command i3bar
+# 	status_command i3status
+#
+#   #; status_command ty3status --config ~/.config/ty3status/ty3status.yaml
+#   #; height 25
+# 	position top
+#
+#   ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#  	tray_output primary
+#
+# 	bindsym button4 nop
+# 	bindsym button5 nop
+# 	strip_workspace_numbers yes
+#
+#   colors {
+#       background #222D31
+#       statusline #F9FAF9
+#       separator  #454947
+#
+#       focused_workspace  #222D31 #16a085 #292F34
+#       active_workspace   #222D31 #353836 #FDF6E3
+#       inactive_workspace #222D31 #222D31 #EEE8D5
+#       binding_mode       #222D31 #2C2C2C #F9FAF9
+#       urgent_workspace   #222D31 #FDF6E3 #E5201D
+#   }
+# }
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
@@ -278,6 +281,17 @@ client.background       #2B2C2B
 
 # set default desktop layout (default is tiling)
 workspace_layout tabbed # <stacking|tabbed>
+
+# Gaps
+gaps inner 10
+gaps outer 5
+smart_gaps on
+smart_borders on
+
+# Border style
+default_border pixel 2
+default_floating_border pixel 2
+for_window [class="^.*"] border pixel 2
 
 #; # Use Mouse+$mod to drag floating windows
 #; floating_modifier $mod

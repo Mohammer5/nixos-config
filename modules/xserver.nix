@@ -34,17 +34,34 @@
       displayManager = {
           startx.enable = true;
           lightdm.enable = true;
-
-          # ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1-1 --mode 1440x900 --primary
-          sessionCommands = ''
-            ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-2 --primary
-          '';
       };
 
       desktopManager = {
         xterm.enable = false;
       };
 
+    };
+
+    picom = {
+      enable = true;
+      backend = "xrender";
+      fade = true;
+      shadow = true;
+      vSync = true;
+      settings = {
+        shadow-radius = 12;
+        shadow-offset-x = -12;
+        shadow-offset-y = -12;
+        shadow-opacity = 0.7;
+        corner-radius = 10;
+        shadow-exclude = [
+          "name = 'Notification'"
+          "class_g = 'Conky'"
+          "class_g ?= 'Notify-osd'"
+          "class_g = 'Cairo-clock'"
+          "_GTK_FRAME_EXTENTS@:c"
+        ];
+      };
     };
 
     desktopManager = {

@@ -31,5 +31,7 @@ in {
     ./home-gerkules/mouse.nix
     ./home-gerkules/shell.nix
     ./home-gerkules/test-service.nix
+    ./home-gerkules/dunst.nix
+    ./home-gerkules/polybar.nix
   ];
 }
