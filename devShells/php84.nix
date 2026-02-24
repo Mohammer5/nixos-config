@@ -13,12 +13,14 @@ let
     openssl
     pdo
     pdo_mysql
+    pdo_sqlite
     simplexml
     xml
     xmlreader
     xmlwriter
     zip
     sodium
+    sockets
   ]);
 in
 pkgs.mkShell {
