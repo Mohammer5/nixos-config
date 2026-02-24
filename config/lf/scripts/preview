@@ -10,7 +10,7 @@ y="$5"
 exec 2>&1
 
 # Optional: show what lf passed in (comment out if noisy)
-echo "DEBUG: file=$file w=$width h=$height x=$x y=$y"
+# echo "DEBUG: file=$file w=$width h=$height x=$x y=$y"
 
 case "$(file --mime-type -Lb "$file")" in
     application/pdf)
@@ -34,6 +34,6 @@ case "$(file --mime-type -Lb "$file")" in
         exit 1
         ;;
     *)
-        bat --color=always --style="changes,numbers" "$@"
+        bat --color=always --style="changes,numbers" "$1"
         ;;
 esac
