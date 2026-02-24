@@ -11,6 +11,14 @@ set-option global matching_pairs ( ) { } [ ] < > “ ” ‘ ’ « » ‹ ›
 add-highlighter global/match_brackets show-matching
 add-highlighter global/ number-lines -hlcursor -relative -separator ' '
 
+# ─────────────────────────
+# Config from other people
+# ─────────────────────────
+source "%val{config}/copied/kakoune-mark.kak"
+
+# ─────
+# @TODO
+# ─────
 source "%val{config}/local/completion.kak"
 source "%val{config}/local/smarttab.kak"
 source "%val{config}/local/syntax_highlighting.kak"
@@ -39,9 +47,9 @@ source "%val{config}/local/goto-file.kak"
 # ────────────
 source "%val{config}/local/multiple-selection.kak"
 source "%val{config}/local/files_mode.kak"
+source "%val{config}/local/highlight_mode.kak"
 source "%val{config}/local/lsp.kak"
 source "%val{config}/local/mirror.kak"
-source "%val{config}/copied/kakoune-mark.kak"
 
 #
 # Playground

@@ -1,27 +1,23 @@
 # mark.kak
 # ----------------------------------------------------------------------------
-# version:  1.1.5
-# date:     2019-01-07
+# version:  1.1.7
+# date:     2024-11-01
 # author:   fsub <fsub-9f4j@noreply.cycloid.eu>
 # rights:   UNLICENSE <https://unlicense.org>
-# source:   https://gitlab.com/fsub/kakoune-mark/-/blob/master/mark.kak
 # ----------------------------------------------------------------------------
-
-declare-user-mode mark-words
-map global user "'" ':enter-user-mode -lock mark-words<ret>' -docstring 'Mark-words mode'
-map global mark-words m :mark-word<ret>
-map global mark-words M :mark-clear<ret>
 
 ###
 # declarations
 
 declare-option -hidden bool mark_debug false
+
 declare-option -hidden regex mark_regex_1
 declare-option -hidden regex mark_regex_2
 declare-option -hidden regex mark_regex_3
 declare-option -hidden regex mark_regex_4
 declare-option -hidden regex mark_regex_5
 declare-option -hidden regex mark_regex_6
+
 declare-option -hidden int-list mark_unused 1 2 3 4 5 6
 declare-option -hidden int-list mark_active
 
@@ -51,10 +47,10 @@ add-highlighter shared/mark/ dynregex '%opt{mark_regex_6}' 0:MarkFace6
 
 # NOTE(fsub): try to override all other kinds of highlighting
 hook -group mark global KakBegin .* %{ try %{
-   hook -group mark global WinSetOption filetype=.* %{ try %{
-      remove-highlighter window/mark
-      add-highlighter window/ ref mark
-}}}}
+   hook -group mark global WinSetOption filetype=.* %{
+      try %{ remove-highlighter window/mark }
+      try %{ add-highlighter window/ ref mark }
+}}}
 
 ###
 # definitions
