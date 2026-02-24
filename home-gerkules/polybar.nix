@@ -30,7 +30,6 @@
     config = {
       "bar/main" = {
         monitor = "\${env:MONITOR:}";
-        monitor-fallback = "DP-9"; # Fallback to your primary known-good monitor
         width = "100%";
         height = 27;
         radius = 0;

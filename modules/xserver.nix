@@ -42,6 +42,8 @@
 
     };
 
+    autorandr.enable = true;
+
     picom = {
       enable = true;
       backend = "xrender";
