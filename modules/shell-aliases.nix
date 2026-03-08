@@ -45,6 +45,7 @@
   jsn16 = "nix develop /nixos-config#jsn16 -c $SHELL";
   jsn14 = "nix develop /nixos-config#jsn14 -c $SHELL";
   cyp = "nix develop /nixos-config#cypress -c $SHELL";
+  cyphp = "nix develop /nixos-config#cypress-php84 -c $SHELL";
   clj = "nix develop /nixos-config#clojure -c $SHELL";
   ocaml = "nix develop /nixos-config#ocaml -c $SHELL";
   playwright = "nix develop /nixos-config#playwright -c $SHELL";

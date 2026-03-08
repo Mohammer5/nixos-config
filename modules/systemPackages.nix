@@ -6,6 +6,8 @@
       xclip
       fzf
       pavucontrol
+      ffmpeg
+      yt-dlp
       docker-compose
       autorandr
       expressvpn

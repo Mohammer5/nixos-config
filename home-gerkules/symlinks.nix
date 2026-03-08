@@ -8,6 +8,7 @@
     ".config/kak-lsp/kak-lsp.toml".source = mkOutOfStoreSymlink "${configDirectory}/kakoune/lsp/kak-lsp.toml";
     ".profile".source = mkOutOfStoreSymlink "${configDirectory}/.profile";
     ".editorconfig".source = mkOutOfStoreSymlink "${configDirectory}/.editorconfig";
+    ".gemini/GEMINI.md".source = mkOutOfStoreSymlink "${configDirectory}/gemini/GEMINI.md";
 
     # directories
     ".config/fish".source = mkOutOfStoreSymlink "${configDirectory}/fish";

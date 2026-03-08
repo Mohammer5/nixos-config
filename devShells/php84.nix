@@ -15,6 +15,7 @@ let
     pdo_mysql
     pdo_sqlite
     simplexml
+    tokenizer
     xml
     xmlreader
     xmlwriter

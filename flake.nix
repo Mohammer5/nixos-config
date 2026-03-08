@@ -62,9 +62,16 @@
       ];
     };
 
-    devShells.${system} = {
+    devShells.${system} = let
       cypress = import ./devShells/cypress.nix { inherit pkgs; };
       php84 = import ./devShells/php84.nix { inherit pkgs; };
+    in {
+      inherit cypress php84;
+
+      cypress-php84 = pkgs.mkShell {
+        inputsFrom = [ cypress php84 ];
+        shellHook = (cypress.shellHook or "") + (php84.shellHook or "");
+      };
     };
   };
 }

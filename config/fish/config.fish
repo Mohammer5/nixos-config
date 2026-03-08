@@ -22,6 +22,28 @@ function fish_user_key_bindings
   bind -M insert \cl accept-autosuggestion execute
 end
 
+function fish_prompt
+  if set -q IN_NIX_SHELL
+    # Nix sets $name, usually like "devShell-php84" or "nix-shell"
+    # We strip "devShell-" and common suffixes to keep it clean.
+    set -l nix_shell_name (echo $name | sed 's/devShell-//; s/-[0-9].*//; s/nix-shell/nix/')
+    set_color -o blue
+    echo -n "($nix_shell_name) "
+    set_color normal
+  end
+
+  set_color green
+  echo -n (prompt_pwd)
+  set_color normal
+
+  # Git branch indicator
+  set_color yellow
+  fish_git_prompt
+  set_color normal
+
+  echo -n " > "
+end
+
 # See: https://discourse.nixos.org/t/nix-env-list-generations-is-empty/33747
 alias listgens "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system"
 alias ys "env BROWSER=none yarn start"
@@ -39,6 +61,10 @@ end
 # Dev shells
 function php84
     nix develop ~/nixos-configuration#php84 -c $SHELL
+end
+
+function cyphp
+    nix develop ~/nixos-configuration#cypress-php84 -c $SHELL
 end
 
 # Dir info
