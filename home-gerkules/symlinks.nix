@@ -1,7 +1,6 @@
 { config, ... }: {
 	home.file = with config.lib.file; let
-    # configDirectory = builtins.toString ../../config;
-    configDirectory = "/home/gerkules/nixos-configuration/config";
+    configDirectory = "/home/gerkules/nixos-configuration/config"; # builtins.toString ../../config;
   in {
     # files
     ".config/i3/config".source = mkOutOfStoreSymlink "${configDirectory}/i3/config";
@@ -9,6 +8,8 @@
     ".profile".source = mkOutOfStoreSymlink "${configDirectory}/.profile";
     ".editorconfig".source = mkOutOfStoreSymlink "${configDirectory}/.editorconfig";
     ".gemini/GEMINI.md".source = mkOutOfStoreSymlink "${configDirectory}/gemini/GEMINI.md";
+    ".codex/AGENTS.md".source = mkOutOfStoreSymlink "${configDirectory}/codex/AGENTS.md";
+    ".codex-work/AGENTS.md".source = mkOutOfStoreSymlink "${configDirectory}/codex/AGENTS.md";
 
     # directories
     ".config/fish".source = mkOutOfStoreSymlink "${configDirectory}/fish";

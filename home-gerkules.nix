@@ -16,6 +16,9 @@ in {
     ".profile".source = mkOutOfStoreSymlink "${baseDir}/config/.profile";
     ".editorconfig".source = mkOutOfStoreSymlink "${baseDir}/config/.editorconfig";
     ".npmrc".source = mkOutOfStoreSymlink "${baseDir}/config/npm/.npmrc";
+    ".gemini/GEMINI.md".source = mkOutOfStoreSymlink "${baseDir}/config/ai-agents/AGENTS.md";
+    ".codex/AGENTS.md".source = mkOutOfStoreSymlink "${baseDir}/config/ai-agents/AGENTS.md";
+    ".codex-work/AGENTS.md".source = mkOutOfStoreSymlink "${baseDir}/config/ai-agents/AGENTS.md";
 
     # directories
     ".config/kitty".source = mkOutOfStoreSymlink "${baseDir}/config/kitty";
