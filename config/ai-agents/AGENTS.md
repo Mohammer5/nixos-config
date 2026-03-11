@@ -32,6 +32,9 @@
 - Progress is tracked by organizing files in a `.board` folder in the project's root
   - Ensure that the `.board` folder is in the `.gitignore`
 - To be able to differentiate between different tasks, use the following folder structure / organization: `.board/tasks/<branch-name>/tasks.md`
+- Keep `.board/tasks/<branch-name>/tasks.md` as a lightweight index to reduce context usage:
+  - Prefer concise ticket summaries in `tasks.md` (title, type, status, blockers, short acceptance summary).
+  - Store full ticket details in per-ticket files under `.board/tasks/<branch-name>/tickets/` and reference them from `tasks.md`.
 - To persist the current working state, add a `.board/tasks/<branch-name>/WORKING_STATE.md` into the project's root.
   - Keep `.board/tasks/<branch-name>/WORKING_STATE.md` updated as the compact execution memory for the current phase.
   - `.board/tasks/<branch-name>/WORKING_STATE.md` synchronization is mandatory during execution, not only at task end:
@@ -39,6 +42,7 @@
     - Keep `Current Objective`, `In Progress`, and `Next Up` aligned with actual state after each meaningful step.
     - Remove or rewrite stale entries immediately when architecture/runtime direction changes.
     - Before recommending the next task, ensure `.board/tasks/<branch-name>/WORKING_STATE.md` reflects the latest verified state.
+  - Read policy: `WORKING_STATE.md` is the primary file to load first for execution context.
 
 ### General rules
 
@@ -55,6 +59,9 @@
   - When work starts on a ticket, move it `Backlog -> In Progress`.
   - When work is completed, move it `In Progress -> Done`.
   - If work is blocked/paused, keep it in `In Progress` and add/update blocker notes in `**Comments:**`.
+- Done archive rule:
+  - Keep only recently completed tickets in `## Done` within `tasks.md`.
+  - Move older completed tickets to `.board/tasks/<branch-name>/archives/` (for example `done-YYYY-MM.md`) and leave a short pointer in `tasks.md` when useful.
 - Git workflow on completion:
   - When moving a ticket from `In Progress` to `Done`, commit the related changes.
   - Use as few commits as possible while preserving conceptual clarity (one conceptual change per commit where practical).
@@ -82,6 +89,9 @@
 - Backlog ordering rule:
   - Put the next tickets we plan to execute at the top of `Backlog`.
   - If tickets can be executed in parallel, keep them co-located; order between those co-located parallel tickets is not important.
+- Backlog size rule:
+  - Keep `Backlog` in `tasks.md` focused on near-term work.
+  - Move far-future or parked items to `.board/tasks/<branch-name>/archives/backlog-later.md`.
 - Epic linkage rule:
   - Every `task` ticket must include an `**Epic:** <epic title>` field.
   - A task cannot be moved to `In Progress` without an `Epic` link.
@@ -97,17 +107,55 @@
 - While we're working on the app, we track the progress in this kanban board.
   - We use it to determine the next tasks
   - We use it to store context that's only understood/explore while working on tasks as comments on the ticket
+- Context-efficiency rule:
+  - Prefer reading only `WORKING_STATE.md`, the `In Progress` section, and the ticket files referenced by active work.
+  - Avoid loading full archives unless required for a concrete decision.
+- Aggressive context budget rules:
+  - Hard board limits in `.board/tasks/<branch-name>/tasks.md`:
+    - `In Progress`: maximum 1 `epic` and maximum 3 `task` tickets.
+    - `Backlog`: maximum 10 near-term tickets.
+    - `Done`: maximum 20 most-recent completed tickets.
+  - Externalize ticket details by default:
+    - Keep `tasks.md` entries minimal and index-style: `ID`, `Type`, `Title`, `Status`, `Epic`, `Blocked by`, and pointer to ticket file.
+    - Store full `Description`, detailed `Acceptance Criteria`, `Artifacts`, and long `Comments` in `.board/tasks/<branch-name>/tickets/<ticket-id>.md`.
+  - Rolling working-state compaction:
+    - Rewrite `.board/tasks/<branch-name>/WORKING_STATE.md` into a compact snapshot at least once every 5 meaningful updates.
+    - Keep `WORKING_STATE.md` to a maximum of 25 lines.
+  - Read budget:
+    - Default reads are limited to `.board/tasks/<branch-name>/WORKING_STATE.md`, active ticket file(s), and top-priority backlog slice.
+    - Archives and historical tickets are read only when required for a concrete decision or explicitly requested.
+  - Structured, low-token ticket format:
+    - Prefer short key-value fields over long prose.
+    - Keep each `**Comments:**` entry to a maximum of 3 lines unless explicitly requested.
+  - Evidence placement:
+    - Store verbose logs, test outputs, and long diffs under `.board/tasks/<branch-name>/evidence/`.
+    - In task files, reference evidence paths and summarize outcomes in 1-2 lines.
+  - Ticket IDs:
+    - Every ticket must have a stable short ID (for example `T-123`).
+    - Cross-references should use ticket IDs instead of repeating long titles/descriptions.
+  - Phase partitioning:
+    - For large initiatives, use phase-scoped board files under `.board/tasks/<branch-name>/archives/` and keep only the current phase active in `tasks.md`.
+  - Response brevity default:
+    - Unless the user asks for detail, keep status/progress responses concise and avoid restating full requirements.
 - When finishing any work item, always check whether the Kanban board should be updated to reflect status/progress/notes.
 
-#### Example ticket
+#### Example ticket format
 
 ```
-- **Type:** task
+# `tasks.md` index entry (lightweight)
+- **ID:** T-123
+  **Type:** task
   **Title:** Normalized macro/market observation schema
+  **Status:** In Progress
   **Epic:** Business-cycle assessment framework + evidence model
-  **Description:** Define the canonical observation schema for raw external series, provenance, release timestamps, revisions, seasonal-adjustment status, and derived-feature input references so connectors and downstream inference use one stable contract.
   **Blocked by:** Required data series + source registry
-  **Includes:** None
+  **Ticket File:** `.board/tasks/<branch-name>/tickets/T-123.md`
+  **Comments:**
+  - Started on 2026-03-10.
+
+# `.board/tasks/<branch-name>/tickets/T-123.md` detail entry
+- **ID:** T-123
+  **Description:** Define the canonical observation schema for raw external series, provenance, release timestamps, revisions, seasonal-adjustment status, and derived-feature input references so connectors and downstream inference use one stable contract.
   **Artifacts:**
   - `schemas/observations/market-observation.schema.json`
   - `src/runtime/contracts/market_observation.js`
@@ -122,29 +170,8 @@
   - **Command(s):**
     - `test -f schemas/observations/market-observation.schema.json`
     - `node --test tests/js/market_observation_schema.test.js`
-    - `rg -n "^## (Purpose|Observation Identity|Temporal Fields|Publisher and Access Provenance|Revision and Adjustment Fields|Value Encoding|Derived Feature Input Rules|Open Questions)" docs/technical/normalized-observation-schema.md`
-    - `rg -n "^## (What This Schema Does|Why Raw Observations Need Normalization|What Metadata Operators Can Trust|Current Limitations)" docs/features/normalized-observation-schema.md`
-  - **Artifacts:**
-    - every source-registry series can map into one canonical raw-observation object without family-specific schema forks
-    - the schema distinguishes authoritative publisher from access path or fallback mirror
-    - the schema distinguishes observation date, reference-period end, and release timestamp
-    - revision behavior and seasonal-adjustment status are explicit fields rather than implicit assumptions
-    - derived features are represented as references to raw observations, not mixed into raw observation values
-  - **Docs:**
-    - `docs/technical/` defines the raw-observation contract in implementation-ready detail
-    - `docs/features/` explains what operators can trust about normalized observations and why the metadata exists
-    - `docs/user/` no changes required in this phase
-  - **Tests:**
-    - add one contract test proving a valid observation payload passes and representative invalid payloads fail for missing temporal or provenance fields
-  - **Invariants:**
-    - this schema is the raw-observation boundary, not the feature-store schema
-    - the same contract must support business-daily, weekly, monthly, and event-driven series
-    - no connector-specific implementation details are allowed into the schema
-    - the output must be specific enough to drive real connector contracts next
   **Stop condition:**
-    - the repository contains a schema, docs, and contract test sufficient to constrain connector output normalization and derived-feature input design
+    - repository contains schema, docs, and contract tests sufficient to constrain connector output normalization.
   **Comments:**
-  - Started on 2026-03-10 after completing `Required data series + source registry`.
-  - 2026-03-10: This ticket defined the raw evidence contract only; it did not implement connectors or feature calculations.
-  - Completed on 2026-03-10 after adding the market-observation schema, validator, contract test, and technical plus feature documentation.
+  - 2026-03-10: Defined raw evidence contract only; connectors/feature calculations are out of scope.
 ```
