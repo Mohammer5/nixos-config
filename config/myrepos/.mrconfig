@@ -1,0 +1,109 @@
+[${DEV_BASE_DIR}/bf2c/bot-with-ai]
+checkout = git clone git@github.com:BF2C/bot-with-ai.git
+
+[${DEV_BASE_DIR}/bf2c/this-time-its-right-TM]
+checkout = git clone git@github.com:BF2C/this-time-its-right-TM.git
+
+[${DEV_BASE_DIR}/bf2c/trend-analyzer]
+checkout = git clone git@github.com:BF2C/trend-analyzer.git
+
+[${DEV_BASE_DIR}/compaire/backend]
+checkout = git clone git@github.com:Compaire/backend.git
+
+[${DEV_BASE_DIR}/compaire/docs]
+checkout = git clone git@github.com:Compaire/docs.git
+
+[${DEV_BASE_DIR}/compaire/frontend]
+checkout = git clone git@github.com:Compaire/frontend.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/agents-templates]
+checkout = git clone git@gitlab.interactive-pioneers.com:interactive-pioneers/agent-templates.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/bim/bim4people-admin]
+checkout = git clone git@gitlab.interactive-pioneers.com:bim4people/bim4people-admin.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/bim/bim4people-nuxt]
+checkout = git clone git@gitlab.interactive-pioneers.com:bim4people/bim4people-nuxt.git
+
+# Local-only directory at the moment, no origin configured:
+# [${DEV_BASE_DIR}/interactive-pioneers/bim/bim4people-vite]
+# checkout = git clone git@gitlab.interactive-pioneers.com:bim4people/bim4people-vite.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/easyrent/website]
+checkout = git clone git@gitlab.interactive-pioneers.com:easy-rent/website.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/henkel/companion-webapp]
+checkout = git clone git@gitlab.interactive-pioneers.com:henkel/companion/companion-webapp.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/ip/acf-image-map-field]
+checkout = git clone git@gitlab.interactive-pioneers.com:interactive-pioneers/ip-stack/acf-image-map-field.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/ip/acf-preserve-backslashes]
+checkout = git clone git@gitlab.interactive-pioneers.com:interactive-pioneers/ip-stack/acf-preserve-backslashes.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/ip/core]
+checkout = git clone https://github.com/lando/core.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/ip/import-export-tools]
+checkout = git clone git@gitlab.interactive-pioneers.com:interactive-pioneers/ip-stack/import-export-tools.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/ip/radicle-2-customization-for-ip-webdev]
+checkout = git clone git@gitlab.interactive-pioneers.com:interactive-pioneers/ip-stack/radicle-2-customization-for-ip-webdev.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/ip/wp-pp]
+checkout = git clone git@gitlab.interactive-pioneers.com:interactive-pioneers/ip-stack/wp-pp.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/porsche/clubhouse-admin-client]
+checkout = git clone git@gitlab.interactive-pioneers.com:porsche/clubhouse/clubhouse-admin-client.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/porsche/porsche-roads-website]
+checkout = git clone git@gitlab.interactive-pioneers.com:porsche/porsche-roads-website.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/porsche/professional-tools]
+checkout = git clone git@gitlab.interactive-pioneers.com:porsche/professional-tools.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/porsche/rbp-aws-deployment]
+checkout = git clone git@gitlab.interactive-pioneers.com:porsche/PorscheRoadsBackend/rbp-aws-deployment.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/porsche/rbp-sharingpages-20]
+checkout = git clone git@gitlab.interactive-pioneers.com:porsche/rbp-sharingpages-20.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/reitwm/reit-wm-2026-website]
+checkout = git clone git@gitlab.interactive-pioneers.com:reit-wm/reit-wm-2026-website.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/rwthc/rwthc-website-radicle]
+checkout = git clone git@gitlab.interactive-pioneers.com:rwthc/rwthc-website-radicle.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/st24/seo-analysis]
+checkout = git clone git@gitlab.interactive-pioneers.com:special-trailers-24/perf-kpi-scrape.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/st24/st24-website-radicle]
+checkout = git clone git@gitlab.interactive-pioneers.com:special-trailers-24/st24-website-radicle.git
+
+[${DEV_BASE_DIR}/interactive-pioneers/time-tracking]
+checkout = git clone git@github.com:Mohammer5/ip-time-tracking.git
+
+[${DEV_BASE_DIR}/others/core]
+checkout = git clone https://github.com/lando/core.git
+
+[${DEV_BASE_DIR}/personal/Steuer]
+checkout = git clone git@github.com:Mohammer5/Steuer.git
+
+[${DEV_BASE_DIR}/personal/agentic-project]
+checkout = git clone git@github.com:Mohammer5/agentic-tutorial.git
+
+[${DEV_BASE_DIR}/personal/compaire]
+checkout = git clone git@github.com:Mohammer5/compaire.git
+
+[${DEV_BASE_DIR}/personal/crawler]
+checkout = git clone git@github.com:Mohammer5/tkp.git
+
+[${DEV_BASE_DIR}/personal/investments_profits]
+checkout = git clone git@github.com:Mohammer5/investments_profits.git
+
+[${DEV_BASE_DIR}/personal/tkp]
+checkout = git clone git@github.com:Mohammer5/tkp.git
+
+# Local-only directory at the moment, no origin configured:
+# [${DEV_BASE_DIR}/personal/my-app]
+# checkout = git clone git@github.com:YOUR_USER/YOUR_REPO.git

@@ -16,6 +16,7 @@ in {
     ".profile".source = mkOutOfStoreSymlink "${baseDir}/config/.profile";
     ".editorconfig".source = mkOutOfStoreSymlink "${baseDir}/config/.editorconfig";
     ".npmrc".source = mkOutOfStoreSymlink "${baseDir}/config/npm/.npmrc";
+    ".mrconfig".source = mkOutOfStoreSymlink "${baseDir}/config/myrepos/.mrconfig";
 
     ".gemini/GEMINI.md".source = mkOutOfStoreSymlink "${baseDir}/config/ai-agents/AGENTS.md";
     ".gemini/settings.json".source = mkOutOfStoreSymlink "${baseDir}/config/gemini/settings.json";
@@ -35,6 +36,7 @@ in {
     ./home-gerkules/brave.nix
     ./home-gerkules/packages.nix
     ./home-gerkules/git.nix
+    ./home-gerkules/myrepos.nix
     ./home-gerkules/mouse.nix
     ./home-gerkules/shell.nix
     ./home-gerkules/test-service.nix
