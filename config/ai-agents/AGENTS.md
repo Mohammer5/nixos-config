@@ -78,10 +78,11 @@
   - Add dated `**Comments:**` note when moved to `Done` (completion summary).
 - Acceptance Criteria are required for tickets in `In Progress` and `Done`.
 - Stop conditions are required for tickets in `In Progress` and `Done`.
-- Backlog tickets do not need `**Artifacts:**` file lists yet.
-- Before moving any ticket from `Backlog` to `In Progress`, `**Artifacts:**` must be defined with concrete expected files to be created/modified (paths and/or narrowly scoped globs).
+- Backlog tickets do not need `**Artifacts:**` yet.
+- Before moving any ticket from `Backlog` to `In Progress`, `**Artifacts:**` must be defined as a compact scope summary.
+- `**Artifacts:**` should prefer directory-level paths, narrowly scoped globs, or a short sentence describing the affected area.
+- Do not enumerate every produced or touched file unless the user explicitly asks for that level of detail.
 - A ticket cannot be moved to `In Progress` if `**Artifacts:**` is missing, unless `**Artifacts:** None (no files produced)` is explicitly stated.
-- When moving a ticket to `Done`, update `**Artifacts:**` so it reflects the actual touched/created files.
 - Before moving any ticket from `Backlog` to `In Progress`, add Acceptance Criteria with explicit docs targets:
   - `docs/technical/` impact (required for architectural or infra changes)
   - `docs/features/` impact (required for implemented behavior changes)
@@ -117,7 +118,7 @@
     - `Done`: maximum 20 most-recent completed tickets.
   - Externalize ticket details by default:
     - Keep `tasks.md` entries minimal and index-style: `ID`, `Type`, `Title`, `Status`, `Epic`, `Blocked by`, and pointer to ticket file.
-    - Store full `Description`, detailed `Acceptance Criteria`, `Artifacts`, and long `Comments` in `.board/tasks/<branch-name>/tickets/<ticket-id>.md`.
+    - Store full `Description`, detailed `Acceptance Criteria`, compact `Artifacts` scope, and long `Comments` in `.board/tasks/<branch-name>/tickets/<ticket-id>.md`.
   - Rolling working-state compaction:
     - Rewrite `.board/tasks/<branch-name>/WORKING_STATE.md` into a compact snapshot at least once every 5 meaningful updates.
     - Keep `WORKING_STATE.md` to a maximum of 25 lines.
@@ -157,15 +158,11 @@
 - **ID:** T-123
   **Description:** Define the canonical observation schema for raw external series, provenance, release timestamps, revisions, seasonal-adjustment status, and derived-feature input references so connectors and downstream inference use one stable contract.
   **Artifacts:**
-  - `schemas/observations/market-observation.schema.json`
-  - `src/runtime/contracts/market_observation.js`
-  - `src/runtime/contracts/index.js`
-  - `src/runtime/index.js`
-  - `docs/technical/normalized-observation-schema.md`
-  - `docs/features/normalized-observation-schema.md`
-  - `tests/js/market_observation_schema.test.js`
-  - `.board/tasks/<branch-name>/WORKING_STATE.md`
-  - `AGENTS.md`
+  - `schemas/observations/`
+  - `src/runtime/contracts/`
+  - `docs/technical/`
+  - `docs/features/`
+  - `tests/js/`
   **Acceptance Criteria:**
   - **Command(s):**
     - `test -f schemas/observations/market-observation.schema.json`

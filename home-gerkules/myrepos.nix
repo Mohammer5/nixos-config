@@ -31,7 +31,7 @@ in {
     done
 
     if [ -f "$config_file" ]; then
-      $DRY_RUN_CMD ${pkgs.myrepos}/bin/mr -c "$config_file" checkout
+      $DRY_RUN_CMD ${pkgs.mr}/bin/mr -c "$config_file" checkout
     fi
   '';
 }

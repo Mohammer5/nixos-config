@@ -20,7 +20,7 @@
       '';
     };
   in [
-    myrepos
+    mr
     nodejs_24 yarn nodePackages.typescript-language-server # JS
     kitty usbutils
     unzip silver-searcher lf fd st ripgrep zip bat # renameutils # cli utils
