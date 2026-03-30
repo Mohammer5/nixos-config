@@ -1,0 +1,40 @@
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+notify = ["/home/gerkules/.local/bin/codex-post-turn-hook"]
+
+[mcp_servers.FigmaRemoteMcp]
+url = "https://mcp.figma.com/mcp"
+
+[projects."/home/gerkules/development/interactive-pioneers"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/bim"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/porsche/clubhouse-admin-client"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/porsche/rbp-sharingpages-20"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/agents-templates"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/bim/bim4people-vite"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/bim/bim4people-admin"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/bim/split-text-poc"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/ai-usage-demo"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/time-tracking"]
+trust_level = "trusted"
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"
+"gpt-5.2-codex" = "gpt-5.4"

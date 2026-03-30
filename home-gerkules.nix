@@ -18,12 +18,26 @@ in {
     ".npmrc".source = mkOutOfStoreSymlink "${baseDir}/config/npm/.npmrc";
     ".mrconfig".source = mkOutOfStoreSymlink "${baseDir}/config/myrepos/.mrconfig";
 
+    # claude
+    ".claude/CLAUDE.md".source = mkOutOfStoreSymlink "${baseDir}/config/ai-agents/AGENTS.md"; # Don't use workflows here, too expensive
+    ".claude.json".source = mkOutOfStoreSymlink "${baseDir}/config/codex/servers.json";
+
+    # gemini
     ".gemini/GEMINI.md".source = mkOutOfStoreSymlink "${baseDir}/config/ai-agents/AGENTS.md";
     ".gemini/settings.json".source = mkOutOfStoreSymlink "${baseDir}/config/gemini/settings.json";
+
+    # codex, private account
     ".codex/AGENTS.md".source = mkOutOfStoreSymlink "${baseDir}/config/ai-agents/AGENTS.md";
+    ".codex/config.toml".source = mkOutOfStoreSymlink "${baseDir}/config/codex/config.toml";
     ".codex/mcp/servers.json".source = mkOutOfStoreSymlink "${baseDir}/config/codex/servers.json";
-    ".codex-work/AGENTS.md".source = mkOutOfStoreSymlink "${baseDir}/config/ai-agents/AGENTS.md";
+
+    # codex, work-client account
+    ".codex-work/AGENTS.md".source = mkOutOfStoreSymlink "${baseDir}/config/ai-agents/AGENTS.md"; # Don't use workflows here, too expensive
+    ".codex-work/config.toml".source = mkOutOfStoreSymlink "${baseDir}/config/codex/config-work.toml";
     ".codex-work/mcp/servers.json".source = mkOutOfStoreSymlink "${baseDir}/config/codex/servers.json";
+
+    # codex hooks
+    ".local/bin/codex-post-turn-hook".source = mkOutOfStoreSymlink "${baseDir}/config/ai-agents/codex-post-turn-hook.js";
 
     # directories
     ".config/kitty".source = mkOutOfStoreSymlink "${baseDir}/config/kitty";

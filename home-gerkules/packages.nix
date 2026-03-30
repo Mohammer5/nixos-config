@@ -40,6 +40,7 @@
     expressvpn
     xcolor
     font-awesome
+    slides
   ];
 
   programs.neovim = {

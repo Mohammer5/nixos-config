@@ -1,0 +1,83 @@
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+notify = ["/home/gerkules/.local/bin/codex-post-turn-hook"]
+
+[mcp_servers.FigmaRemoteMcp]
+url = "https://mcp.figma.com/mcp"
+
+[profiles.mini-medium]
+model = "gpt-5.4-mini"
+model_reasoning_effort = "medium"
+
+[projects."/home/gerkules"]
+trust_level = "untrusted"
+
+[projects."/home/gerkules/nixos-configuration"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/easyrent/website"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/others/core"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/personal/investments_profits"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/bf2c/bot-with-ai"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/porsche/clubhouse-admin-client"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/personal/agentic-project"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/interactive-pioneers/bim"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/compaire/backend"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/compaire/frontend"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/others/pbakaus/impeccable"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/personal/ai-code-guide"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/personal/agentic-dev-test"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/personal/codex-improvements"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/personal/codex-foundation"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/personal/codex-configuration"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/personal/mohammer5.github.io"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/personal/maintainable-software.github.io"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/maintainable.software/docs-driven-development-template"]
+trust_level = "trusted"
+
+[projects."/home/gerkules/development/personal/blog.maintainable.software"]
+trust_level = "trusted"
+
+[notice]
+hide_full_access_warning = true
+
+[notice.model_migrations]
+"gpt-5.2-codex" = "gpt-5.3-codex"
+"gpt-5.3-codex" = "gpt-5.4"

@@ -54,8 +54,11 @@ alias config "cd ~/nixos-configuration"
 
 # reb = rebuild, s = switce
 function rebs
-    echo "Building system: $NIXOS_CONFIG_PATH#$hostname"
-    sudo nixos-rebuild switch --flake "$NIXOS_CONFIG_PATH#$HOSTNAME" --show-trace
+    set -l flake "/home/gerkules/nixos-configuration#$HOSTNAME"
+    set -l cmd sudo nixos-rebuild switch --flake $flake --show-trace
+
+    echo (string join ' ' $cmd)
+    $cmd
 end
 
 # Dev shells
@@ -172,7 +175,8 @@ function kill9 --wraps kill --description ''
 end
 
 function gkak
-    set -l session_name (git remote get-url origin 2> /dev/null | cut -d ":" -f2 | sed "s/\(.*\)[.]git\$/\1/" | sed "s/\//-/g")
+    set -l raw_session_name (git remote get-url origin 2> /dev/null | cut -d ":" -f2 | sed "s/\(.*\)[.]git\$/\1/" | sed "s/\//-/g")
+    set -l session_name (printf '%s' "$raw_session_name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9_-]/-/g; s/--*/-/g; s/^[-_]*//; s/[-_]*$//')
 
     if test -n "$session_name"
         kak -c "$session_name" $argv || kak -s "$session_name" $argv
@@ -182,4 +186,3 @@ function gkak
 end
 
 export PATH="/home/gerkules/.lando/bin:$PATH"; #landopath
-

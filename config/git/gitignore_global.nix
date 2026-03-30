@@ -6,6 +6,11 @@
   # git time manager
   ".gtm/"
 
+  # Codex conversation logs
+  "CONVERSATION.md"
+  ".codex-post-turn-hook/"
+  ".git-commit-message"
+
   ####################################################
   # From: https://gist.github.com/octocat/9257657
   ####################################################

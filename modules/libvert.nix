@@ -10,17 +10,11 @@
         # ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
-    spiceUSBRedirection.enable = true;
   };
 
   users.users.${username}.extraGroups = [ "libvirtd" ];
 
-  environment.systemPackages = with pkgs; [
-    spice
-    spice-gtk
-    spice-protocol
-    virt-viewer
-  ];
+  environment.systemPackages = with pkgs; [ virt-viewer ];
   programs.virt-manager.enable = true;
 
   home-manager.users.${username} = {
